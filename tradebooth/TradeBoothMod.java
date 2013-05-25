@@ -1,12 +1,12 @@
-package mods.tradebooth;
+package tradebooth;
 
-import mods.tradebooth.block.BlockTradeBoothStorage;
-import mods.tradebooth.block.BlockTradeBoothTop;
-import mods.tradebooth.handler.GuiHandler;
-import mods.tradebooth.handler.PacketHandler;
-import mods.tradebooth.item.ItemTradeBoothTop;
-import mods.tradebooth.tileentity.TileEntityTradeBoothStorage;
-import mods.tradebooth.tileentity.TileEntityTradeBoothTop;
+import tradebooth.block.BlockTradeBoothStorage;
+import tradebooth.block.BlockTradeBoothTop;
+import tradebooth.handler.GuiHandler;
+import tradebooth.handler.PacketHandler;
+import tradebooth.item.ItemTradeBoothTop;
+import tradebooth.tileentity.TileEntityTradeBoothStorage;
+import tradebooth.tileentity.TileEntityTradeBoothTop;
 import net.minecraft.block.Block;
 import net.minecraft.item.Item;
 import net.minecraftforge.common.Configuration;
@@ -26,7 +26,7 @@ import cpw.mods.fml.common.network.NetworkRegistry;
 import cpw.mods.fml.common.registry.GameRegistry;
 import cpw.mods.fml.common.registry.LanguageRegistry;
 
-@Mod( modid="TradeBoothMod", name="Trade Booth Mod", version="0.3" )
+@Mod( modid="TradeBoothMod", name="Trade Booth Mod", version="0.4" )
 
 @NetworkMod( clientSideRequired = true, serverSideRequired = false, channels = {"TradeBooth"}, packetHandler = PacketHandler.class )
 
@@ -42,7 +42,7 @@ public class TradeBoothMod {
 	
 	public static int BoothTopRenderID;
 	
-	@SidedProxy( clientSide= "mods.tradebooth.ClientProxy", serverSide = "mods.tradebooth.CommonProxy" )
+	@SidedProxy( clientSide= "tradebooth.ClientProxy", serverSide = "tradebooth.CommonProxy" )
 	public static CommonProxy commonProxy;
 	
 	@PreInit

@@ -1,7 +1,7 @@
-package mods.tradebooth.handler;
+package tradebooth.handler;
 
-import mods.tradebooth.TradeBoothMod;
-import mods.tradebooth.render.RenderTradeBoothTop;
+import tradebooth.TradeBoothMod;
+import tradebooth.render.RenderTradeBoothTop;
 import net.minecraft.block.Block;
 import net.minecraft.client.renderer.RenderBlocks;
 import net.minecraft.world.IBlockAccess;
@@ -16,9 +16,9 @@ public class BlockRenderHandler implements ISimpleBlockRenderingHandler{
 	}
 
 	@Override
-	public boolean renderWorldBlock(IBlockAccess world, int x, int y, int z, Block block, int modelId, RenderBlocks renderer) {
+	public boolean renderWorldBlock( IBlockAccess blockAccess, int x, int y, int z, Block block, int modelId, RenderBlocks renderBlocks ){
 		if( modelId == TradeBoothMod.BoothTopRenderID ){
-			return RenderTradeBoothTop.renderTradeBoothTop( block, x, y, z, renderer );
+			return RenderTradeBoothTop.renderTradeBoothTop( blockAccess, block, x, y, z, renderBlocks );
 		}
 		return false;
 	}

@@ -1,8 +1,8 @@
-package mods.tradebooth.container;
+package tradebooth.container;
 
-import mods.tradebooth.gui.SlotImmovable;
-import mods.tradebooth.tileentity.TileEntityTradeBoothStorage;
-import mods.tradebooth.tileentity.TileEntityTradeBoothTop;
+import tradebooth.gui.SlotImmovable;
+import tradebooth.tileentity.TileEntityTradeBoothStorage;
+import tradebooth.tileentity.TileEntityTradeBoothTop;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.entity.player.InventoryPlayer;
 import net.minecraft.inventory.Container;

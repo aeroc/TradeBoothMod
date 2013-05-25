@@ -1,10 +1,10 @@
-package mods.tradebooth.block;
+package tradebooth.block;
 
 import java.util.Random;
 
-import mods.tradebooth.CommonProxy;
-import mods.tradebooth.TradeBoothMod;
-import mods.tradebooth.tileentity.TileEntityTradeBoothStorage;
+import tradebooth.CommonProxy;
+import tradebooth.TradeBoothMod;
+import tradebooth.tileentity.TileEntityTradeBoothStorage;
 import net.minecraft.block.BlockContainer;
 import net.minecraft.block.material.Material;
 import net.minecraft.client.renderer.texture.IconRegister;
@@ -15,6 +15,7 @@ import net.minecraft.inventory.IInventory;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.tileentity.TileEntity;
+import net.minecraft.world.IBlockAccess;
 import net.minecraft.world.World;
 
 public class BlockTradeBoothStorage extends BlockContainer{
@@ -126,4 +127,8 @@ public class BlockTradeBoothStorage extends BlockContainer{
 	public void registerIcons( IconRegister iconRegister ){
         this.blockIcon = iconRegister.registerIcon( "tradebooth:tradeboothstorage" );
     }
+	@Override
+	public boolean shouldSideBeRendered(IBlockAccess blockAccess, int par2, int par3, int par4, int par5 ){
+		return true;
+	}
 }

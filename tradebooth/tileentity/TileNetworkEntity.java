@@ -1,4 +1,4 @@
-package mods.tradebooth.tileentity;
+package tradebooth.tileentity;
 
 import java.io.ByteArrayOutputStream;
 import java.io.DataOutputStream;
@@ -7,7 +7,7 @@ import java.io.IOException;
 
 import cpw.mods.fml.common.network.PacketDispatcher;
 import cpw.mods.fml.common.network.Player;
-import mods.tradebooth.handler.PacketHandler;
+import tradebooth.handler.PacketHandler;
 import net.minecraft.network.packet.Packet;
 import net.minecraft.network.packet.Packet250CustomPayload;
 import net.minecraft.tileentity.TileEntity;

@@ -1,13 +1,13 @@
-package mods.tradebooth.handler;
+package tradebooth.handler;
 
-import mods.tradebooth.container.ContainerTradeBoothStorage;
-import mods.tradebooth.container.ContainerTradeBoothTopNonOwner;
-import mods.tradebooth.container.ContainerTradeBoothTopOwner;
-import mods.tradebooth.gui.GuiTradeBoothStorage;
-import mods.tradebooth.gui.GuiTradeBoothTopNonOwner;
-import mods.tradebooth.gui.GuiTradeBoothTopOwner;
-import mods.tradebooth.tileentity.TileEntityTradeBoothStorage;
-import mods.tradebooth.tileentity.TileEntityTradeBoothTop;
+import tradebooth.container.ContainerTradeBoothStorage;
+import tradebooth.container.ContainerTradeBoothTopNonOwner;
+import tradebooth.container.ContainerTradeBoothTopOwner;
+import tradebooth.gui.GuiTradeBoothStorage;
+import tradebooth.gui.GuiTradeBoothTopNonOwner;
+import tradebooth.gui.GuiTradeBoothTopOwner;
+import tradebooth.tileentity.TileEntityTradeBoothStorage;
+import tradebooth.tileentity.TileEntityTradeBoothTop;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.world.World;

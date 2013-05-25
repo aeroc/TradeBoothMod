@@ -1,4 +1,4 @@
-package mods.tradebooth.gui;
+package tradebooth.gui;
 
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.inventory.IInventory;

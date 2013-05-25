@@ -1,8 +1,10 @@
-package mods.tradebooth.item;
+package tradebooth.item;
 
 import cpw.mods.fml.common.network.PacketDispatcher;
-import mods.tradebooth.CommonProxy;
-import mods.tradebooth.TradeBoothMod;
+import cpw.mods.fml.relauncher.Side;
+import cpw.mods.fml.relauncher.SideOnly;
+import tradebooth.CommonProxy;
+import tradebooth.TradeBoothMod;
 import net.minecraft.block.Block;
 import net.minecraft.client.renderer.texture.IconRegister;
 import net.minecraft.creativetab.CreativeTabs;
@@ -21,9 +23,13 @@ public class ItemTradeBoothTop extends Item{
 		this.setCreativeTab( CreativeTabs.tabDecorations );
 		this.setUnlocalizedName( "TradeBoothTop" );
 	}
+//	@Override
+//	public void updateIcons( IconRegister iconRegister ){
+//        this.iconIndex = iconRegister.registerIcon( "tradebooth:tradeboothtop" );
+//    }
 	@Override
-	public void updateIcons( IconRegister iconRegister ){
-        this.iconIndex = iconRegister.registerIcon( "tradebooth:tradeboothtop" );
+    public void registerIcons(IconRegister iconRegister){
+        this.itemIcon = iconRegister.registerIcon( "tradebooth:tradeboothtop" );
     }
 	@Override
 	public boolean onItemUse( ItemStack itemStack, EntityPlayer entityPlayer, World world, int x, int y, int z, int side, float hitX, float hitY, float hitZ ){

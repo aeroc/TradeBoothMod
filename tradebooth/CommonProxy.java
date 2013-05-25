@@ -1,9 +1,9 @@
-package mods.tradebooth;
+package tradebooth;
 
 public class CommonProxy {
 
-	public static String GuiTradeBoothTopPNG = "/mods/tradebooth/topGui.png";
-	public static String GuiTradeBoothBottomPNG = "/mods/tradebooth/bottomGui.png";
+	public static String GuiTradeBoothTopPNG = "/tradebooth/topGui.png";
+	public static String GuiTradeBoothBottomPNG = "/tradebooth/bottomGui.png";
 	
 	public void registerTextures(){
 		

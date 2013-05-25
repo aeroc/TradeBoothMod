@@ -1,12 +1,10 @@
-package mods.tradebooth.tileentity;
+package tradebooth.tileentity;
 
 import java.io.ByteArrayOutputStream;
 import java.io.DataOutputStream;
-
-
 import cpw.mods.fml.common.network.PacketDispatcher;
 import cpw.mods.fml.common.network.Player;
-import mods.tradebooth.handler.PacketHandler;
+import tradebooth.handler.PacketHandler;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.inventory.IInventory;
 import net.minecraft.item.ItemStack;

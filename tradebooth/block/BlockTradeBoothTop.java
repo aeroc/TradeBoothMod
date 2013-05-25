@@ -1,11 +1,11 @@
-package mods.tradebooth.block;
+package tradebooth.block;
 
 import java.util.ArrayList;
 import java.util.Random;
 
-import mods.tradebooth.CommonProxy;
-import mods.tradebooth.TradeBoothMod;
-import mods.tradebooth.tileentity.TileEntityTradeBoothTop;
+import tradebooth.CommonProxy;
+import tradebooth.TradeBoothMod;
+import tradebooth.tileentity.TileEntityTradeBoothTop;
 import net.minecraft.block.BlockContainer;
 import net.minecraft.block.material.Material;
 import net.minecraft.client.renderer.texture.IconRegister;
@@ -149,5 +149,9 @@ public class BlockTradeBoothTop extends BlockContainer{
         
         return ret;
     }
+	public void setBlockBoundsForItemRender(){
+		this.setBlockBounds(0.0F, 0.0F, 0.0F, 1.0F, 0.125F, 1.0F);
+		System.out.println( "Hello" );
+	}
 
 }

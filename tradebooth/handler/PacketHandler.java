@@ -1,12 +1,12 @@
-package mods.tradebooth.handler;
+package tradebooth.handler;
 
 import java.io.ByteArrayInputStream;
 import java.io.DataInputStream;
 
 
-import mods.tradebooth.tileentity.TileEntityTradeBoothStorage;
-import mods.tradebooth.tileentity.TileEntityTradeBoothTop;
-import mods.tradebooth.tileentity.TileNetworkEntity;
+import tradebooth.tileentity.TileEntityTradeBoothStorage;
+import tradebooth.tileentity.TileEntityTradeBoothTop;
+import tradebooth.tileentity.TileNetworkEntity;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.network.INetworkManager;
 import net.minecraft.network.packet.Packet250CustomPayload;

@@ -1,11 +1,9 @@
-package mods.tradebooth.gui;
+package tradebooth.gui;
 
 import org.lwjgl.opengl.GL11;
-
-
-import mods.tradebooth.CommonProxy;
-import mods.tradebooth.container.ContainerTradeBoothStorage;
-import mods.tradebooth.tileentity.TileEntityTradeBoothStorage;
+import tradebooth.CommonProxy;
+import tradebooth.container.ContainerTradeBoothStorage;
+import tradebooth.tileentity.TileEntityTradeBoothStorage;
 import net.minecraft.client.gui.inventory.GuiContainer;
 import net.minecraft.entity.player.InventoryPlayer;
 import net.minecraft.util.StatCollector;

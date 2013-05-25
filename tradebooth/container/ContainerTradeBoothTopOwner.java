@@ -1,6 +1,6 @@
-package mods.tradebooth.container;
+package tradebooth.container;
 
-import mods.tradebooth.tileentity.TileEntityTradeBoothTop;
+import tradebooth.tileentity.TileEntityTradeBoothTop;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.entity.player.InventoryPlayer;
 import net.minecraft.inventory.Container;

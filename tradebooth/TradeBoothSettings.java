@@ -1,4 +1,4 @@
-package mods.tradebooth;
+package tradebooth;
 
 import net.minecraftforge.common.Configuration;
 
