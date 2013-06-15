@@ -26,13 +26,13 @@ import cpw.mods.fml.common.network.NetworkRegistry;
 import cpw.mods.fml.common.registry.GameRegistry;
 import cpw.mods.fml.common.registry.LanguageRegistry;
 
-@Mod( modid="TradeBoothMod", name="Trade Booth Mod", version="0.4" )
+@Mod( modid="TradeBoothMod", name="Trade Booth Mod", version="0.4.1" )
 
 @NetworkMod( clientSideRequired = true, serverSideRequired = false, channels = {"TradeBooth"}, packetHandler = PacketHandler.class )
 
 public class TradeBoothMod {
 	
-	@Instance( "TreadBoothMod" )
+	@Instance( "TradeBoothMod" )
 	public static TradeBoothMod instance;
 
 	public static Block blockTradeBoothStorage;

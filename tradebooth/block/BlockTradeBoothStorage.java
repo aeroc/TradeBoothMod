@@ -4,6 +4,7 @@ import java.util.Random;
 
 import tradebooth.CommonProxy;
 import tradebooth.TradeBoothMod;
+import tradebooth.TradeBoothSettings;
 import tradebooth.tileentity.TileEntityTradeBoothStorage;
 import net.minecraft.block.BlockContainer;
 import net.minecraft.block.material.Material;
@@ -23,7 +24,7 @@ public class BlockTradeBoothStorage extends BlockContainer{
 	public BlockTradeBoothStorage( int id ){
 		super( id, Material.wood );
 		this.setHardness( 5.0F );
-		this.setResistance( 9999.0F );
+		this.setResistance( TradeBoothSettings.ExplosionResistance );
 		this.setUnlocalizedName( "blockTradeBoothStorage" );
 		this.setCreativeTab( CreativeTabs.tabDecorations );
 	}
