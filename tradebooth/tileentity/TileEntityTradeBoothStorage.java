@@ -16,6 +16,7 @@ public class TileEntityTradeBoothStorage extends TileNetworkEntity implements II
 	
 	private ItemStack[] inventory;
 	private String playerOwner;
+	public boolean providePower = false;
 
 	public TileEntityTradeBoothStorage(){
 		this.inventory = new ItemStack[36];

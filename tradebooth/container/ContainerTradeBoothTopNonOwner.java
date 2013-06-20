@@ -1,5 +1,8 @@
 package tradebooth.container;
 
+import tradebooth.TradeBoothMod;
+import tradebooth.TradeBoothSettings;
+import tradebooth.block.BlockTradeBoothStorage;
 import tradebooth.gui.SlotImmovable;
 import tradebooth.tileentity.TileEntityTradeBoothStorage;
 import tradebooth.tileentity.TileEntityTradeBoothTop;
@@ -90,6 +93,12 @@ public class ContainerTradeBoothTopNonOwner extends Container{
 										
 										this.removeFromStorage( this.tileEntity.getConnectedTileEntityStorage( entityPlayer.worldObj ), buyingStack );
 										this.addToPlayer( entityPlayer, buyingStack );
+										
+										//Tell the storage block to send a redpower signal
+										TileEntityTradeBoothStorage tileEntityStorage = this.tileEntity.getConnectedTileEntityStorage( entityPlayer.worldObj );
+										tileEntityStorage.providePower = true;
+										entityPlayer.worldObj.notifyBlockChange( tileEntityStorage.xCoord, tileEntityStorage.yCoord, tileEntityStorage.zCoord, TradeBoothSettings.BlockIDBottom );
+										entityPlayer.worldObj.scheduleBlockUpdate( tileEntityStorage.xCoord, tileEntityStorage.yCoord, tileEntityStorage.zCoord, TradeBoothSettings.BlockIDBottom, TradeBoothMod.blockTradeBoothStorage.tickRate( entityPlayer.worldObj ) );
 									}
 									else{
 										entityPlayer.sendChatToPlayer( "Storage is full or sold out." );

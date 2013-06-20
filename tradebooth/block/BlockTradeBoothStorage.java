@@ -132,4 +132,34 @@ public class BlockTradeBoothStorage extends BlockContainer{
 	public boolean shouldSideBeRendered(IBlockAccess blockAccess, int par2, int par3, int par4, int par5 ){
 		return true;
 	}
+	@Override
+	public int tickRate( World world ){
+		return TradeBoothSettings.RedstoneTransactionDuration;
+	}
+	@Override
+	public int isProvidingWeakPower( IBlockAccess iBlockAccess, int par2, int par3, int par4, int par5 ){
+		TileEntityTradeBoothStorage tileEntity = (TileEntityTradeBoothStorage) iBlockAccess.getBlockTileEntity( par2, par3, par4 );
+		if( tileEntity.providePower ){
+			return 15;
+		}
+		else{
+			return 0;
+		}
+	}
+	@Override
+	public int isProvidingStrongPower( IBlockAccess iBlockAccess, int par2, int par3, int par4, int par5 ){
+		return 0;
+	}
+	@Override
+	public boolean canProvidePower(){
+        return true;
+    }
+	@Override
+	public void updateTick( World world, int par2, int par3, int par4, Random random ){
+		if( !world.isRemote ){
+			TileEntityTradeBoothStorage tileEntity = (TileEntityTradeBoothStorage) world.getBlockTileEntity( par2, par3, par4 );
+			tileEntity.providePower = false;
+			world.notifyBlockChange( par2, par3, par4, TradeBoothSettings.BlockIDBottom );
+		}
+	}
 }

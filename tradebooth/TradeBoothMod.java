@@ -26,7 +26,7 @@ import cpw.mods.fml.common.network.NetworkRegistry;
 import cpw.mods.fml.common.registry.GameRegistry;
 import cpw.mods.fml.common.registry.LanguageRegistry;
 
-@Mod( modid="TradeBoothMod", name="Trade Booth Mod", version="0.4.1" )
+@Mod( modid="TradeBoothMod", name="Trade Booth Mod", version="0.4.2" )
 
 @NetworkMod( clientSideRequired = true, serverSideRequired = false, channels = {"TradeBooth"}, packetHandler = PacketHandler.class )
 
