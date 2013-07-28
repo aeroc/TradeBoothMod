@@ -1,10 +1,13 @@
 package tradebooth.item;
 
+import java.util.List;
+
 import cpw.mods.fml.common.network.PacketDispatcher;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 import tradebooth.CommonProxy;
 import tradebooth.TradeBoothMod;
+import tradebooth.block.BlockTradeBoothStorage;
 import net.minecraft.block.Block;
 import net.minecraft.client.renderer.texture.IconRegister;
 import net.minecraft.creativetab.CreativeTabs;
@@ -12,25 +15,44 @@ import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.network.packet.Packet3Chat;
+import net.minecraft.util.Icon;
 import net.minecraft.world.World;
 
 public class ItemTradeBoothTop extends Item{
 	
 	public Block placeBlock = TradeBoothMod.blockTradeBoothTop;
+	public static Icon[] iconArray = new Icon[4];
 
 	public ItemTradeBoothTop( int i ){
 		super( i );
 		this.setCreativeTab( CreativeTabs.tabDecorations );
 		this.setUnlocalizedName( "TradeBoothTop" );
+		this.setHasSubtypes( true );
 	}
-//	@Override
-//	public void updateIcons( IconRegister iconRegister ){
-//        this.iconIndex = iconRegister.registerIcon( "tradebooth:tradeboothtop" );
-//    }
+	@Override
+	public String getUnlocalizedName( ItemStack itemStack ){
+		return this.getUnlocalizedName() + BlockTradeBoothStorage.woodType[itemStack.getItemDamage()];
+	}
+	@Override
+	public void getSubItems( int par1, CreativeTabs creativeTabs, List list ){
+		for( int i = 0; i < 4; i++ ){
+			list.add( new ItemStack( this, 1, i ) );
+		}
+	}
+	@Override
+	public int getMetadata( int meta ){
+		return meta;
+	}
 	@Override
     public void registerIcons(IconRegister iconRegister){
-        this.itemIcon = iconRegister.registerIcon( "tradebooth:tradeboothtop" );
+		for( int i = 0; i < 4; i++ ){
+			this.iconArray[i] = iconRegister.registerIcon( "tradebooth:tradeboothtop" + i );
+		}
     }
+	@Override
+	public Icon getIconFromDamage( int meta ){
+		return this.iconArray[meta];
+	}
 	@Override
 	public boolean onItemUse( ItemStack itemStack, EntityPlayer entityPlayer, World world, int x, int y, int z, int side, float hitX, float hitY, float hitZ ){
 		int targetBlockID = world.getBlockId( x, y, z );
@@ -67,14 +89,14 @@ public class ItemTradeBoothTop extends Item{
 		return false;
 	}
 	public boolean placeBlockAt(ItemStack stack, EntityPlayer player, World world, int x, int y, int z, int side, float hitX, float hitY, float hitZ, int metadata){
-		
-		if( !world.setBlock( x, y, z, this.placeBlock.blockID ) ){
+		System.out.println( stack.getItemDamage() );
+		if( !world.setBlock( x, y, z, this.placeBlock.blockID, stack.getItemDamage(), 2 ) ){
 	        return false;
 		}
 
 		if( world.getBlockId( x, y, z ) == this.placeBlock.blockID ){
 			placeBlock.onBlockPlacedBy( world, x, y, z, player, stack );
-			placeBlock.onPostBlockPlaced(world, x, y, z, metadata);
+			placeBlock.onPostBlockPlaced(world, x, y, z, metadata );
 		}
 
 		return true;

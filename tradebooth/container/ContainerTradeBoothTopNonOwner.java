@@ -11,6 +11,7 @@ import net.minecraft.entity.player.InventoryPlayer;
 import net.minecraft.inventory.Container;
 import net.minecraft.inventory.Slot;
 import net.minecraft.item.ItemStack;
+import net.minecraft.util.ChatMessageComponent;
 
 public class ContainerTradeBoothTopNonOwner extends Container{
 
@@ -97,23 +98,23 @@ public class ContainerTradeBoothTopNonOwner extends Container{
 										//Tell the storage block to send a redpower signal
 										TileEntityTradeBoothStorage tileEntityStorage = this.tileEntity.getConnectedTileEntityStorage( entityPlayer.worldObj );
 										tileEntityStorage.providePower = true;
-										entityPlayer.worldObj.notifyBlockChange( tileEntityStorage.xCoord, tileEntityStorage.yCoord, tileEntityStorage.zCoord, TradeBoothSettings.BlockIDBottom );
-										entityPlayer.worldObj.scheduleBlockUpdate( tileEntityStorage.xCoord, tileEntityStorage.yCoord, tileEntityStorage.zCoord, TradeBoothSettings.BlockIDBottom, TradeBoothMod.blockTradeBoothStorage.tickRate( entityPlayer.worldObj ) );
+										entityPlayer.worldObj.notifyBlockChange( tileEntityStorage.xCoord, tileEntityStorage.yCoord, tileEntityStorage.zCoord, TradeBoothSettings.blockIDBottom );
+										entityPlayer.worldObj.scheduleBlockUpdate( tileEntityStorage.xCoord, tileEntityStorage.yCoord, tileEntityStorage.zCoord, TradeBoothSettings.blockIDBottom, TradeBoothMod.blockTradeBoothStorage.tickRate( entityPlayer.worldObj ) );
 									}
 									else{
-										entityPlayer.sendChatToPlayer( "Storage is full or sold out." );
+										entityPlayer.sendChatToPlayer( ChatMessageComponent.func_111077_e( "Storage is full or sold out." ) );
 									}
 								}
 								else{
-									entityPlayer.sendChatToPlayer( "A valid storage block is not connected to booth top." );
+									entityPlayer.sendChatToPlayer( ChatMessageComponent.func_111077_e( "A valid storage block is not connected to booth top." ) );
 								}
 							}
 							else{
-								entityPlayer.sendChatToPlayer( "You do not have enough items for this transaction." );
+								entityPlayer.sendChatToPlayer( ChatMessageComponent.func_111077_e( "You do not have enough items for this transaction." ) );
 							}
 						}
 						else{
-							entityPlayer.sendChatToPlayer( "Your inventory is too full for this transaction." );
+							entityPlayer.sendChatToPlayer( ChatMessageComponent.func_111077_e( "Your inventory is too full for this transaction." ) );
 						}
 					}
 					else{

@@ -18,9 +18,11 @@ public class TileEntityTradeBoothTop extends TileNetworkEntity implements IInven
 
 	private ItemStack[] inventory;
 	private String playerOwner;
+	private static int ticksPerCycle = 60;
+	private int tickCount = 0;
 	
 	public TileEntityTradeBoothTop(){
-		this.inventory = new ItemStack[16];
+		this.inventory = new ItemStack[17];
 		this.playerOwner = "";
 	}
 	
@@ -170,7 +172,31 @@ public class TileEntityTradeBoothTop extends TileNetworkEntity implements IInven
 		packet.length = byteArrayStream.size();
 		return packet;
 	}
-
+	public Packet250CustomPayload createUpdatePacket(){
+		int dataLength = 25; // 1 byte + 6 ints
+		ByteArrayOutputStream byteArrayStream = new ByteArrayOutputStream( dataLength );
+		DataOutputStream outputStream = new DataOutputStream( byteArrayStream );
+		
+		try{
+			outputStream.writeByte( PacketHandler.PACKET_UPDATE_TRADE_BOOTH_TOP );
+			outputStream.writeInt( this.xCoord );
+			outputStream.writeInt( this.yCoord );
+			outputStream.writeInt( this.zCoord );
+			outputStream.writeInt( this.getStackInSlot(16).itemID );
+			outputStream.writeInt( this.getStackInSlot(16).stackSize );
+			outputStream.writeInt( this.getStackInSlot(16).getItemDamage() );
+		}
+		catch( Exception e){
+			e.printStackTrace();
+			System.out.println( "error" );
+		}
+		
+		Packet250CustomPayload packet = new Packet250CustomPayload();
+		packet.channel = "TradeBooth";
+		packet.data = byteArrayStream.toByteArray();
+		packet.length = byteArrayStream.size();
+		return packet;
+	}
 	public boolean isConnectedToStorageAndSameOwner( World world ){
 		if( this.yCoord > 1 ){ //Do not allow a TradeBoothTop to attempt a connection when placed below y: 2
 			TileEntity checkEntity = world.getBlockTileEntity( this.xCoord, this.yCoord - 1, this.zCoord );
@@ -215,8 +241,20 @@ public class TileEntityTradeBoothTop extends TileNetworkEntity implements IInven
 	}
 
 	@Override
-	public boolean isStackValidForSlot(int i, ItemStack itemstack) {
+	public boolean isItemValidForSlot(int i, ItemStack itemstack) {
 		// TODO Auto-generated method stub
 		return false;
+	}
+	@Override
+	public void updateEntity(){
+		if( this.tickCount < TileEntityTradeBoothTop.ticksPerCycle ){
+			this.tickCount++;
+		}
+		else{
+			this.tickCount = 0;
+			if( !this.worldObj.isRemote && this.getStackInSlot(16) != null ){ //If server && slot is not empty
+				PacketDispatcher.sendPacketToAllPlayers( this.createUpdatePacket() );
+			}
+		}
 	}
 }

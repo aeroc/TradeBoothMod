@@ -1,6 +1,10 @@
 package tradebooth.block;
 
+import java.util.List;
 import java.util.Random;
+
+import cpw.mods.fml.relauncher.Side;
+import cpw.mods.fml.relauncher.SideOnly;
 
 import tradebooth.CommonProxy;
 import tradebooth.TradeBoothMod;
@@ -15,16 +19,22 @@ import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.inventory.IInventory;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
+import net.minecraft.network.packet.Packet3Chat;
 import net.minecraft.tileentity.TileEntity;
+import net.minecraft.util.ChatMessageComponent;
+import net.minecraft.util.Icon;
 import net.minecraft.world.IBlockAccess;
 import net.minecraft.world.World;
 
 public class BlockTradeBoothStorage extends BlockContainer{
 
+	public static final String[] woodType = new String[] {"Oak", "Spruce", "Birch", "Jungle"};
+    private Icon[] iconArray = new Icon[4];
+
 	public BlockTradeBoothStorage( int id ){
 		super( id, Material.wood );
 		this.setHardness( 5.0F );
-		this.setResistance( TradeBoothSettings.ExplosionResistance );
+		this.setResistance( TradeBoothSettings.explosionResistance );
 		this.setUnlocalizedName( "blockTradeBoothStorage" );
 		this.setCreativeTab( CreativeTabs.tabDecorations );
 	}
@@ -51,7 +61,7 @@ public class BlockTradeBoothStorage extends BlockContainer{
 			}
 			else{
 				if( world.isRemote ){
-					player.sendChatToPlayer( "This storage container does not belong to you." );
+					player.sendChatToPlayer( ChatMessageComponent.func_111077_e( "This storage container does not belong to you." ) );
 				}
 				return true;
 			}
@@ -126,15 +136,22 @@ public class BlockTradeBoothStorage extends BlockContainer{
 	}
 	@Override
 	public void registerIcons( IconRegister iconRegister ){
-        this.blockIcon = iconRegister.registerIcon( "tradebooth:tradeboothstorage" );
+        this.iconArray[0] = iconRegister.registerIcon( "tradebooth:tradeboothstorage0" );
+        this.iconArray[1] = iconRegister.registerIcon( "tradebooth:tradeboothstorage1" );
+        this.iconArray[2] = iconRegister.registerIcon( "tradebooth:tradeboothstorage2" );
+        this.iconArray[3] = iconRegister.registerIcon( "tradebooth:tradeboothstorage3" );
     }
+	@Override
+	public Icon getIcon( int side, int meta ){
+		return this.iconArray[meta];
+	}
 	@Override
 	public boolean shouldSideBeRendered(IBlockAccess blockAccess, int par2, int par3, int par4, int par5 ){
 		return true;
 	}
 	@Override
 	public int tickRate( World world ){
-		return TradeBoothSettings.RedstoneTransactionDuration;
+		return TradeBoothSettings.redstoneTransactionDuration;
 	}
 	@Override
 	public int isProvidingWeakPower( IBlockAccess iBlockAccess, int par2, int par3, int par4, int par5 ){
@@ -159,7 +176,18 @@ public class BlockTradeBoothStorage extends BlockContainer{
 		if( !world.isRemote ){
 			TileEntityTradeBoothStorage tileEntity = (TileEntityTradeBoothStorage) world.getBlockTileEntity( par2, par3, par4 );
 			tileEntity.providePower = false;
-			world.notifyBlockChange( par2, par3, par4, TradeBoothSettings.BlockIDBottom );
+			world.notifyBlockChange( par2, par3, par4, TradeBoothSettings.blockIDBottom );
 		}
 	}
+	@Override
+	@SideOnly( Side.CLIENT )
+	public void getSubBlocks(int par1, CreativeTabs creativeTabs, List list){
+		for( int i = 0; i < 4; i++ ){
+			list.add( new ItemStack( this, 1, i ) );
+		}
+	}
+	@Override
+	public int damageDropped( int meta ){
+        return meta;
+    }
 }
