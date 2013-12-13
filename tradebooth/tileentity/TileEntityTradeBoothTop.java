@@ -188,7 +188,7 @@ public class TileEntityTradeBoothTop extends TileNetworkEntity implements IInven
 		}
 		catch( Exception e){
 			e.printStackTrace();
-			System.out.println( "error" );
+			//System.out.println( "error" );
 		}
 		
 		Packet250CustomPayload packet = new Packet250CustomPayload();

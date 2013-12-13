@@ -165,7 +165,6 @@ public class BlockTradeBoothTop extends BlockContainer{
     }
 	public void setBlockBoundsForItemRender(){
 		this.setBlockBounds(0.0F, 0.0F, 0.0F, 1.0F, 0.125F, 1.0F);
-		System.out.println( "Hello" );
 	}
 
 	@Override

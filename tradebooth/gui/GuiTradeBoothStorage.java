@@ -36,7 +36,7 @@ public class GuiTradeBoothStorage extends GuiContainer{
 	@Override
 	protected void drawGuiContainerBackgroundLayer( float par1, int par2, int par3 ){
 		GL11.glColor4f( 1.0F, 1.0F, 1.0F, 1.0F );
-		this.mc.renderEngine.func_110577_a( new ResourceLocation( "tradebooth", CommonProxy.GuiTradeBoothBottomPNG ) );
+		this.mc.renderEngine.bindTexture( new ResourceLocation( "tradebooth", CommonProxy.GuiTradeBoothBottomPNG ) );
 		int x = ( width - xSize ) / 2;
 		int y = ( height - ySize ) / 2;
 		this.drawTexturedModalRect( x, y - 34, 0, 0, 175, 210 );

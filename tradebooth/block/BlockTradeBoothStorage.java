@@ -61,7 +61,7 @@ public class BlockTradeBoothStorage extends BlockContainer{
 			}
 			else{
 				if( world.isRemote ){
-					player.sendChatToPlayer( ChatMessageComponent.func_111077_e( "This storage container does not belong to you." ) );
+					player.sendChatToPlayer( ChatMessageComponent.createFromText( "This storage container does not belong to you." ) );
 				}
 				return true;
 			}

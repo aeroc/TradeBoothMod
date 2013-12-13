@@ -283,6 +283,6 @@ public class TileEntityTradeBoothStorage extends TileNetworkEntity implements II
 	@Override
 	public boolean isItemValidForSlot(int i, ItemStack itemstack) {
 		// TODO Auto-generated method stub
-		return false;
+		return true;
 	}
 }

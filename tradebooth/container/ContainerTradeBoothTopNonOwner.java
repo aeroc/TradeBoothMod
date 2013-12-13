@@ -102,19 +102,19 @@ public class ContainerTradeBoothTopNonOwner extends Container{
 										entityPlayer.worldObj.scheduleBlockUpdate( tileEntityStorage.xCoord, tileEntityStorage.yCoord, tileEntityStorage.zCoord, TradeBoothSettings.blockIDBottom, TradeBoothMod.blockTradeBoothStorage.tickRate( entityPlayer.worldObj ) );
 									}
 									else{
-										entityPlayer.sendChatToPlayer( ChatMessageComponent.func_111077_e( "Storage is full or sold out." ) );
+										entityPlayer.sendChatToPlayer( ChatMessageComponent.createFromText( "Storage is full or sold out." ) );
 									}
 								}
 								else{
-									entityPlayer.sendChatToPlayer( ChatMessageComponent.func_111077_e( "A valid storage block is not connected to booth top." ) );
+									entityPlayer.sendChatToPlayer( ChatMessageComponent.createFromText( "A valid storage block is not connected to booth top." ) );
 								}
 							}
 							else{
-								entityPlayer.sendChatToPlayer( ChatMessageComponent.func_111077_e( "You do not have enough items for this transaction." ) );
+								entityPlayer.sendChatToPlayer( ChatMessageComponent.createFromText( "You do not have enough items for this transaction." ) );
 							}
 						}
 						else{
-							entityPlayer.sendChatToPlayer( ChatMessageComponent.func_111077_e( "Your inventory is too full for this transaction." ) );
+							entityPlayer.sendChatToPlayer( ChatMessageComponent.createFromText( "Your inventory is too full for this transaction." ) );
 						}
 					}
 					else{

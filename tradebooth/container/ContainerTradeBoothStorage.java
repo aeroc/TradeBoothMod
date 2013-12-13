@@ -41,7 +41,7 @@ public class ContainerTradeBoothStorage extends Container{
 	}
 	@Override
 	public ItemStack transferStackInSlot( EntityPlayer player, int inventorySlot ){
-		System.out.println( "transfer: " + inventorySlot );
+		//System.out.println( "transfer: " + inventorySlot );
 		ItemStack itemStack = null;
 		Slot slot = (Slot) this.inventorySlots.get( inventorySlot );
 		

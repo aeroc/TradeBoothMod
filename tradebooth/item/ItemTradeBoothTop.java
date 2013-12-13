@@ -89,7 +89,7 @@ public class ItemTradeBoothTop extends Item{
 		return false;
 	}
 	public boolean placeBlockAt(ItemStack stack, EntityPlayer player, World world, int x, int y, int z, int side, float hitX, float hitY, float hitZ, int metadata){
-		System.out.println( stack.getItemDamage() );
+		//System.out.println( stack.getItemDamage() );
 		if( !world.setBlock( x, y, z, this.placeBlock.blockID, stack.getItemDamage(), 2 ) ){
 	        return false;
 		}
